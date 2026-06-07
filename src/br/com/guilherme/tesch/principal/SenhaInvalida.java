@@ -10,6 +10,9 @@ public class SenhaInvalida {
         Scanner sc = new Scanner(System.in);
         ValidaSenha verifica = new ValidaSenha();
 
+        boolean cadastroConcluido = false;
+
+    while(!cadastroConcluido){
         try{
         
             System.out.println("--- Cadastre sua senha --- ");
@@ -17,11 +20,14 @@ public class SenhaInvalida {
 
             var senha = sc.nextLine();
             verifica.setSenha(senha);
-        
+           
+           
             verifica.validaTamanho();
 
             System.out.print("Repita sua senha novamente: ");
             var senha2 = sc.nextLine();
+            
+          
             verifica.setSenhaValida(senha2);
 
             if (verifica.senhasCoincidem()) {
@@ -35,10 +41,7 @@ public class SenhaInvalida {
         }catch(SenhaInvalidaException e){
             System.out.println(e.getMessage());
         }
-
-
-
-
+    }
         sc.close();
     }
 }
